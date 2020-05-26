@@ -1,0 +1,36 @@
+{
+  "name": "astral",
+  "version": "1.0.0",
+  "description": "Astral is a general Discord bot for utility, moderation, and custom commands.",
+  "main": "index.js",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.1.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-standard": "^4.0.1",
+    "moment": "^2.26.0",
+    "sqlite3": "^4.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DylanDirlam/Astral.git"
+  },
+  "keywords": [
+    "discord",
+    "bot"
+  ],
+  "author": "Dylan Dirlam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DylanDirlam/Astral/issues"
+  },
+  "homepage": "https://github.com/DylanDirlam/Astral#readme"
+}
