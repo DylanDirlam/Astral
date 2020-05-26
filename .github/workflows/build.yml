@@ -22,6 +22,7 @@ jobs:
         run: eslint "src/**"
     
   build:
+    needs: [linting]
     name: 'Build'
     runs-on: ubuntu-latest
     steps:
