@@ -17,6 +17,7 @@ jobs:
           node-version: '12.x'
       - name: Install Packages
         run: npm install
+      - run: npm install -g eslint
       - name: Lint Files
         run: eslint "src/**"
     
