@@ -8,6 +8,8 @@ Dotenv.config()
 const Client = new Discord.Client()
 
 // Command Files
+const Utility = require('./Commands/Utility.js')
+const Moderation = require('./Commands/Moderation.js')
 
 // Startup Code once bot is loaded
 Client.on('ready', () => {
@@ -19,9 +21,22 @@ Client.on('ready', () => {
 Client.on('message', async (msg) => {
   if (msg.author.bot) return
   if (msg.content.startsWith(';')) {
-     if (msg.content.startsWith('ping', 1)) {
+    if (msg.content.startsWith('ping', 1)) {
       msg.channel.send('p o n g')
     }
+    if (msg.content.toLowerCase().startsWith('user', 1)) {
+      Utility.User(msg)
+      return
+    }
+    if (msg.content.toLowerCase().startsWith('kick', 1)) {
+      Moderation.Kick(msg)
+      return
+    }
+    if (msg.content.toLowerCase().startsWith('ban', 1)) {
+      Moderation.Ban(msg)
+      return
+    }
+    console.log('No command found')
   }
 })
 
