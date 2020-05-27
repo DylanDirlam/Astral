@@ -8,16 +8,17 @@
     "dotenv": "^8.2.0",
     "eslint": "^7.1.0",
     "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-standard": "^4.0.1",
     "moment": "^2.26.0",
+    "nodemon": "^2.0.4",
     "sqlite3": "^4.2.0"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node src/index.js"
+    "start": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
