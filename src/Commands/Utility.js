@@ -30,7 +30,7 @@ module.exports = {
         { name: '**User ID**', value: `${MentionedUser.id}` },
         { name: '**Account Created**', value: `${CreatedTimestamp} ET`, inline: true },
         { name: '**Account Joined**', value: `${JoinedTimestamp} ET`, inline: true },
-        { name: '**Roles**', value: `${RolesString}` }
+        { name: '**Roles**', value: `${RolesString || 'None'}` }
       )
 
     if (MentionedMember.premiumSinceTimestamp) {
