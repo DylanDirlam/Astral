@@ -6,6 +6,7 @@ module.exports = {
     Kick: require('./Moderation/Kick.js')
   },
   Utility: {
+    Help: require('./Utility/Help.js'),
     Ping: require('./Utility/Ping.js'),
     User: require('./Utility/User.js')
   }

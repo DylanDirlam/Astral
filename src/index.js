@@ -26,14 +26,13 @@ Client.on('message', async (msg) => {
   if (msg.author.bot) return
   if (msg.content.startsWith(';')) {
     // Moderation
-    if (Core.CheckCommand('ban', msg, Commands.Moderation.Ban)) return
-    if (Core.CheckCommand('kick', msg, Commands.Moderation.Kick)) return
+    if (Core.CheckCommand('ban', msg, Commands.Moderation.Ban)) return true
+    if (Core.CheckCommand('kick', msg, Commands.Moderation.Kick)) return true
 
     // Utility
-    if (Core.CheckCommand('ping', msg, Commands.Utility.Ping)) return
-    if (Core.CheckCommand(['user', 'userinfo'], msg, Commands.Utility.User)) return
-
-    console.log('No command found')
+    if (Core.CheckCommand('help', msg, Commands.Utility.Help)) return true
+    if (Core.CheckCommand('ping', msg, Commands.Utility.Ping)) return true
+    if (Core.CheckCommand(['user', 'userinfo'], msg, Commands.Utility.User)) return true
   }
 })
 
