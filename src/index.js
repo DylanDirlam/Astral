@@ -37,4 +37,13 @@ Client.on('message', async (msg) => {
   }
 })
 
+Client.on('guildCreate', async (guild) => {
+  console.log(`Bot has joined new server: ${guild.name} - Owned by: ${guild.owner.user.tag} (${guild.ownerID})`)
+})
+
+Client.on('guildDelete', async (guild) => {
+  if (!guild.available) return
+  console.log(`Bot has left server: ${guild.name} - Owned by: ${guild.owner.user.tag} (${guild.ownerID})`)
+})
+
 Client.login(process.env.BOT_TOKEN)
