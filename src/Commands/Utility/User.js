@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const Moment = require('moment')
+const Moment = require('moment-timezone')
 
 module.exports = async function (msg) {
   const Mentions = msg.mentions.users
@@ -8,8 +8,8 @@ module.exports = async function (msg) {
     MentionedUser = msg.author
   }
   const MentionedMember = await msg.guild.members.fetch(MentionedUser.id)
-  const CreatedTimestamp = Moment(MentionedUser.createdTimestamp).format('MMMM Do YYYY, h:mma')
-  const JoinedTimestamp = Moment(MentionedMember.joinedTimestamp).format('MMMM Do YYYY, h:mma')
+  const CreatedTimestamp = Moment(MentionedUser.createdTimestamp).tz('America/New_York').format('MMMM Do YYYY, h:mmA z')
+  const JoinedTimestamp = Moment(MentionedMember.joinedTimestamp).tz('America/New_York').format('MMMM Do YYYY, h:mmA z')
   const RolesArray = []
   MentionedMember.roles.cache.forEach(role => {
     if (role.rawPosition === 0) return // Position 0 is @everyone
@@ -25,8 +25,8 @@ module.exports = async function (msg) {
       { name: '**Display Name**', value: `${MentionedMember.displayName}`, inline: true },
       { name: '**Tag**', value: `${MentionedUser.tag}`, inline: true },
       { name: '**User ID**', value: `${MentionedUser.id}` },
-      { name: '**Account Created**', value: `${CreatedTimestamp} ET`, inline: true },
-      { name: '**Account Joined**', value: `${JoinedTimestamp} ET`, inline: true },
+      { name: '**Account Created**', value: `${CreatedTimestamp}`, inline: true },
+      { name: '**Account Joined**', value: `${JoinedTimestamp}`, inline: true },
       { name: '**Roles**', value: `${RolesString || 'None'}` }
     )
 
