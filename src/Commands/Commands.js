@@ -18,6 +18,13 @@ module.exports = {
     description: 'Displays the help menu. If a command is specified, displays the help text for the command.',
     contributors: 'DylanDirlam'
   },
+  info: {
+    name: 'Info',
+    category: 'Utility',
+    format: ';info',
+    description: 'Displays the bot info.',
+    contributors: 'DylanDirlam'
+  },
   ban: {
     name: 'Ban',
     category: 'Moderation',

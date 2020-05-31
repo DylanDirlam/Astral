@@ -1,39 +1,34 @@
 const Discord = require('discord.js')
-const Dotenv = require('dotenv')
-Dotenv.config()
-const Moment = require('moment')
-process.on('unhandledRejection', (reason, p) => {
-  console.log(`${Moment().format(process.env.TIMESTAMP_FORMAT)}: Unhandled Rejection at: Promise`, p, 'reason:', reason)
-})
 const Client = new Discord.Client()
+const Moment = require('moment')
 const Core = require('./Core/Index.js')
 const Commands = require('./Commands/Index.js')
+const Package = require('./../package.json')
+require('dotenv').config()
+process.on('unhandledRejection', (reason, p) => {
+  console.log(`${Moment().format('YYYY-mm-dd H:i:s')}: Unhandled Rejection at: Promise`, p, 'reason:', reason)
+})
 
 // Startup Code once bot is loaded
 Client.on('ready', () => {
-  switch (process.env.PRODUCTION_ENV) {
-    case 'prod':
-      Client.user.setActivity('💻')
-      break
-    default:
-      Client.user.setActivity('💻 Dev Mode')
-  }
+  Client.user.setActivity(`v${Package.version} ;help`)
   console.log('Bot loaded.')
 })
 
 // Message events
 Client.on('message', async (msg) => {
   if (msg.author.bot) return
-  if (msg.content.startsWith(';')) {
-    // Moderation
-    if (Core.CheckCommand('ban', msg, Commands.Moderation.Ban)) return true
-    if (Core.CheckCommand('kick', msg, Commands.Moderation.Kick)) return true
+  if (!msg.content.startsWith(';')) return
 
-    // Utility
-    if (Core.CheckCommand('help', msg, Commands.Utility.Help)) return true
-    if (Core.CheckCommand('ping', msg, Commands.Utility.Ping)) return true
-    if (Core.CheckCommand(['user', 'userinfo'], msg, Commands.Utility.User)) return true
-  }
+  // Moderation
+  if (Core.CheckCommand('ban', msg, Commands.Moderation.Ban)) return true
+  if (Core.CheckCommand('kick', msg, Commands.Moderation.Kick)) return true
+
+  // Utility
+  if (Core.CheckCommand('help', msg, Commands.Utility.Help)) return true
+  if (Core.CheckCommand('info', msg, Commands.Utility.Info)) return true
+  if (Core.CheckCommand('ping', msg, Commands.Utility.Ping)) return true
+  if (Core.CheckCommand(['user', 'userinfo'], msg, Commands.Utility.User)) return true
 })
 
 Client.on('guildCreate', async (guild) => {

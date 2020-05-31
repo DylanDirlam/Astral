@@ -7,6 +7,7 @@ module.exports = {
   },
   Utility: {
     Help: require('./Utility/Help.js'),
+    Info: require('./Utility/Info.js'),
     Ping: require('./Utility/Ping.js'),
     User: require('./Utility/User.js')
   }
