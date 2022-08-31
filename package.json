@@ -15,7 +15,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "moment-timezone": "^0.5.31",
+    "moment-timezone": "^0.5.35",
     "nodemon": "^2.0.4",
     "sqlite3": "^4.2.0"
   },
